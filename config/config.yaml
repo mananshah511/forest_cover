@@ -1,6 +1,6 @@
 training_pipeline_config:
-  pipeline_name: income
-  artifact_dir: forest
+  pipeline_name: forest
+  artifact_dir: artifact
 
 data_ingestion_config:
   dataset_download_url: https://archive.ics.uci.edu/static/public/31/covertype.zip
