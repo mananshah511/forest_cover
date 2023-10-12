@@ -10,7 +10,7 @@ CURRENT_TIME_STAMP = f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}"
 
 DATABASE_NAME = "covtype"
 
-NO_CLUSTER = 3
+NO_CLUSTER = 1
 
 DROP_COLUMN_LIST = ['wilderness_area1','soil_type_1']
 

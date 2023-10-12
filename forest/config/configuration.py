@@ -132,6 +132,7 @@ class Configuration:
                                                       model_config_file_path=model_config_file)
             
             logging.info(f"model trainer config : {model_trainer_config}")
+            return model_trainer_config
         except Exception as e:
             raise ForestException(sys,e) from e
         
