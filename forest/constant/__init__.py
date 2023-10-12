@@ -10,6 +10,10 @@ CURRENT_TIME_STAMP = f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}"
 
 DATABASE_NAME = "covtype"
 
+NO_CLUSTER = 3
+
+DROP_COLUMN_LIST = ['wilderness_area1','soil_type_1']
+
 COLUMN = ['elevation','aspect','slope','horizontal_distance_to_hydrology','Vertical_Distance_To_Hydrology','Horizontal_Distance_To_Roadways',
           'Horizontal_Distance_To_Fire_Points','wilderness_area1','wilderness_area2','wilderness_area3','wilderness_area4'
           ,'soil_type_1','soil_type_2','soil_type_3','soil_type_4','soil_type_5','soil_type_6','soil_type_7','soil_type_8'
