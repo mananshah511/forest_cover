@@ -1,7 +1,7 @@
 import os,sys
 from forest.loggers import logging
 from forest.exception import ForestException
-from forest.entity.config_entity import DataIngestionConfig,TrainingPipelineConfig,DataValidationConfig
+from forest.entity.config_entity import DataIngestionConfig,TrainingPipelineConfig,DataValidationConfig,DataTransformConfig
 from forest.constant import *
 from forest.util.util import read_yaml
 
@@ -73,6 +73,12 @@ class Configuration:
             logging.info(f"data validation config: {data_validation_config}")
 
             return data_validation_config
+        except Exception as e:
+            raise ForestException(sys,e) from e
+
+    def get_data_transform_config(self)->DataTransformConfig:
+        try:
+            pass
         except Exception as e:
             raise ForestException(sys,e) from e
         
