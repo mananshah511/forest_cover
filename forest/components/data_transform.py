@@ -224,7 +224,7 @@ class DataTransform:
                                                             transform_train_dir=self.data_transform_config.transform_train_dir,
                                                             transform_test_dir=self.data_transform_config.transform_test_dir,
                                                             preprocessed_dir=self.data_transform_config.preprocessed_file_path,
-                                                            cluster_model_dir=cluster_dir)
+                                                            cluster_model_dir=self.data_transform_config.cluster_model_file_path)
             return data_transform_artifact
             
 

@@ -17,3 +17,6 @@ ModelEvulationArtifact = namedtuple("ModelEvulationConfig",
                                   ["is_model_accepted","evulation_model_file_path"])
 
 ModelPusherArtifact = namedtuple("ModelPusherArtifact",["export_dir_path"])
+
+FinalArtifact = namedtuple("FinalArtifact",["preprocessed_model_path",
+                                            "cluster_model_path","export_dir_path"])

@@ -28,6 +28,9 @@ COLUMN = ['elevation','aspect','slope','horizontal_distance_to_hydrology','Verti
           ,'soil_type_33','soil_type_34','soil_type_35','soil_type_36','soil_type_37','soil_type_38','soil_type_39','soil_type_40','class'
 ]
 
+TARGET_CLASS_LIST = ['Spruce/Fir','Lodgepole Pine','Ponderosa Pine','Cottonwood/Willow','Aspen','Douglas-fir','Krummholz']
+
+
 
 COLUMN_KEY = "columns"
 NUMERIC_COULMN_KEY = "numerical_columns"

@@ -1,9 +1,9 @@
-import os,sys
+import os,sys,json
 from forest.loggers import logging
 from forest.exception import ForestException
 from forest.config.configuration import Configuration
 from forest.entity.config_entity import DataIngestionConfig
-from forest.entity.artifact_entity import DataIngestionArtifact,DataValidationArtifact,DataTransformArtifact,ModelTrainerArtifact,ModelEvulationArtifact,ModelPusherArtifact
+from forest.entity.artifact_entity import DataIngestionArtifact,DataValidationArtifact,DataTransformArtifact,ModelTrainerArtifact,ModelEvulationArtifact,ModelPusherArtifact,FinalArtifact
 from forest.components.data_ingestion import DataIngestion
 from forest.components.data_validation import DataValidation
 from forest.components.data_transform import DataTransform
@@ -82,5 +82,14 @@ class Pipeline:
             model_evultion_artifact = self.start_model_evulation(data_transform_artifact=data_transform_artifact,
                                                                  model_trainer_artifact=model_trainer_artifact)
             model_pusher_artifact = self.start_model_pusher(model_evulation_artifact=model_evultion_artifact)
+
+            final_artifact = FinalArtifact(preprocessed_model_path=data_transform_artifact.preprocessed_dir,
+                                           cluster_model_path=data_transform_artifact.cluster_model_dir,
+                                           export_dir_path=model_pusher_artifact.export_dir_path)
+
+            with open('data.json', 'w') as json_obj:
+                json.dump(final_artifact._asdict(), json_obj)
+
+
         except Exception as e:
             raise ForestException(sys,e) from e
