@@ -3,12 +3,13 @@ from forest.loggers import logging
 from forest.exception import ForestException
 from forest.config.configuration import Configuration
 from forest.entity.config_entity import DataIngestionConfig
-from forest.entity.artifact_entity import DataIngestionArtifact,DataValidationArtifact,DataTransformArtifact,ModelTrainerArtifact,ModelEvulationArtifact
+from forest.entity.artifact_entity import DataIngestionArtifact,DataValidationArtifact,DataTransformArtifact,ModelTrainerArtifact,ModelEvulationArtifact,ModelPusherArtifact
 from forest.components.data_ingestion import DataIngestion
 from forest.components.data_validation import DataValidation
 from forest.components.data_transform import DataTransform
 from forest.components.model_trainer import ModelTrainer
 from forest.components.model_evulation import ModelEvulation
+from forest.components.model_pusher import ModelPusher
 
 class Pipeline:
 
@@ -61,6 +62,14 @@ class Pipeline:
             return model_evulation.intiate_model_evulation()
         except Exception as e:
             raise ForestException(sys,e) from e
+
+    def start_model_pusher(self,model_evulation_artifact:ModelEvulationArtifact)->ModelPusherArtifact:
+        try:
+            model_pusher = ModelPusher(model_evulation_artifact=model_evulation_artifact,
+                                       model_pusher_config=self.config.get_model_pusher_config())
+            return model_pusher.intiate_model_pusher()
+        except Exception as e:
+            raise ForestException(sys,e) from e
         
         
     def run_pipeline(self):
@@ -72,5 +81,6 @@ class Pipeline:
             model_trainer_artifact = self.start_model_trainer(data_transform_artifact=data_transform_artifact)
             model_evultion_artifact = self.start_model_evulation(data_transform_artifact=data_transform_artifact,
                                                                  model_trainer_artifact=model_trainer_artifact)
+            model_pusher_artifact = self.start_model_pusher(model_evulation_artifact=model_evultion_artifact)
         except Exception as e:
             raise ForestException(sys,e) from e
