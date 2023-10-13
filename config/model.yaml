@@ -6,18 +6,9 @@ grid_search:
     verbose: 2
   
 model_selection:
-  module_0:
-    class: LogisticRegression
-    module: sklearn.linear_model
-    params:
-      penalty: l2
-    search_param_grid:
-      penalty:
-      - l2
-
-  module_1:
-    class: RandomForestClassifier
-    module: sklearn.ensemble
+  module_2:
+    class: DecisionTreeClassifier
+    module: sklearn.tree
     params:
       max_depth: 2
     search_param_grid:
@@ -27,11 +18,10 @@ model_selection:
       - 4
       - 5
       - 6
-      - 7
       - 8
-      - 9
       - 10
-      - 11
       - 12
       - 15
       - 20
+
+  

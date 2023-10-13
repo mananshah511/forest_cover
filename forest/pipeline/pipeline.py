@@ -3,11 +3,12 @@ from forest.loggers import logging
 from forest.exception import ForestException
 from forest.config.configuration import Configuration
 from forest.entity.config_entity import DataIngestionConfig
-from forest.entity.artifact_entity import DataIngestionArtifact,DataValidationArtifact,DataTransformArtifact,ModelTrainerArtifact
+from forest.entity.artifact_entity import DataIngestionArtifact,DataValidationArtifact,DataTransformArtifact,ModelTrainerArtifact,ModelEvulationArtifact
 from forest.components.data_ingestion import DataIngestion
 from forest.components.data_validation import DataValidation
 from forest.components.data_transform import DataTransform
 from forest.components.model_trainer import ModelTrainer
+from forest.components.model_evulation import ModelEvulation
 
 class Pipeline:
 
@@ -50,6 +51,16 @@ class Pipeline:
             return model_trainer.intiate_model_trainer()
         except Exception as e:
             raise ForestException(sys,e) from e
+
+    def start_model_evulation(self,data_transform_artifact:DataTransformArtifact,
+                              model_trainer_artifact:ModelTrainerArtifact)->ModelEvulationArtifact:
+        try:
+            model_evulation = ModelEvulation(data_transform_artifact=data_transform_artifact,
+                                             model_trainer_artifact=model_trainer_artifact,
+                                             model_evulation_config=self.config.get_model_evulation_config())
+            return model_evulation.intiate_model_evulation()
+        except Exception as e:
+            raise ForestException(sys,e) from e
         
         
     def run_pipeline(self):
@@ -59,5 +70,7 @@ class Pipeline:
             data_transform_artifact = self.start_data_transform(data_ingestion_artifact=data_ingestion_artifact,
                                             data_validation_artifact=data_validation_artifact)
             model_trainer_artifact = self.start_model_trainer(data_transform_artifact=data_transform_artifact)
+            model_evultion_artifact = self.start_model_evulation(data_transform_artifact=data_transform_artifact,
+                                                                 model_trainer_artifact=model_trainer_artifact)
         except Exception as e:
             raise ForestException(sys,e) from e

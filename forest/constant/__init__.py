@@ -14,6 +14,11 @@ NO_CLUSTER = 1
 
 DROP_COLUMN_LIST = ['wilderness_area1','soil_type_1']
 
+
+BEST_MODEL_KEY = "best_model"
+HISTORY_KEY = "history"
+MODEL_PATH_KEY = "model_path"
+
 COLUMN = ['elevation','aspect','slope','horizontal_distance_to_hydrology','Vertical_Distance_To_Hydrology','Horizontal_Distance_To_Roadways',
           'Horizontal_Distance_To_Fire_Points','wilderness_area1','wilderness_area2','wilderness_area3','wilderness_area4'
           ,'soil_type_1','soil_type_2','soil_type_3','soil_type_4','soil_type_5','soil_type_6','soil_type_7','soil_type_8'
