@@ -10,7 +10,7 @@ CURRENT_TIME_STAMP = f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}"
 
 DATABASE_NAME = "covtype"
 
-NO_CLUSTER = 1
+NO_CLUSTER = 2
 
 DROP_COLUMN_LIST = ['wilderness_area1','soil_type_1']
 
@@ -86,4 +86,10 @@ MODEL_TRAINER_MODEL_CONFIG_FILE_NAME_KEY = "model_config_file_name"
 MODEL_EVULATION_CONFIG_KEY = "model_evulation_config"
 MODEL_EVULATION_DIR = "model_evulation"
 MODEL_EVULATION_FILE_NAME_KEY = "model_evulation_file_name"
+
+#model pusher related variables
+
+MODEL_PUSHER_CONFIG_KEY = "model_pusher_config"
+MODEL_PUSHER_DIR = "model_pusher"
+MODEL_PUSHER_EXPORT_MODEL_DIR_KEY = "model_export_dir"
 
