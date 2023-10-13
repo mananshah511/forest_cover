@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covertype Prediction Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: inline-table;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .form-group select,
+        .form-group input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Covertype Prediction Form</h2>
+        <form id="covertype-form"  method="post">
+            <div class="form-group">
+                <label for="elevation">Elevation:</label>
+                <input type="number" id="elevation" name="elevation" required>
+            </div>
+            <div class="form-group">
+                <label for="aspect">Aspect:</label>
+                <input type="number" id="aspect" name="aspect" required>
+            </div>
+            <div class="form-group">
+                <label for="slope">Slope:</label>
+                <input type="number" id="slope" name="slope" required>
+            </div>
+            <div class="form-group">
+                <label for="horizontal-distance-to-hydrology">Horizontal Distance to Hydrology:</label>
+                <input type="number" id="horizontal-distance-to-hydrology" name="horizontal-distance-to-hydrology" required>
+            </div>
+            <div class="form-group">
+                <label for="vertical-distance-to-hydrology">Vertical Distance to Hydrology:</label>
+                <input type="number" id="vertical-distance-to-hydrology" name="vertical-distance-to-hydrology" required>
+            </div>
+            <div class="form-group">
+                <label for="horizontal-distance-to-roadways">Horizontal Distance to Roadways:</label>
+                <input type="number" id="horizontal-distance-to-roadways" name="horizontal-distance-to-roadways" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="horizontal-distance-to-fire-points">Horizontal Distance to Fire Points:</label>
+                <input type="number" id="horizontal-distance-to-fire-points" name="horizontal-distance-to-fire-points" required>
+            </div>
+            <div class="form-group">
+                <label for="wilderness-area">Wilderness Area:</label>
+                <select id="wilderness-area" name="wilderness-area">
+                    <option value="1">Wilderness Area 1</option>
+                    <option value="2">Wilderness Area 2</option>
+                    <option value="3">Wilderness Area 3</option>
+                    <option value="4">Wilderness Area 4</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="soil-type">Soil Type:</label>
+                <select id="soil-type" name="soil-type">
+                    <option value="1">Soil Type 1</option>
+                    <option value="2">Soil Type 2</option>
+                    <option value="3">Soil Type 3</option>
+                    <option value="4">Soil Type 4</option>
+                    <option value="5">Soil Type 5</option>
+                    <option value="6">Soil Type 6</option>
+                    <option value="7">Soil Type 7</option>
+                    <option value="8">Soil Type 8</option>
+                    <option value="9">Soil Type 9</option>
+                    <option value="10">Soil Type 10</option>
+                    <option value="11">Soil Type 11</option>
+                    <option value="12">Soil Type 12</option>
+                    <option value="13">Soil Type 13</option>
+                    <option value="14">Soil Type 14</option>
+                    <option value="15">Soil Type 15</option>
+                    <option value="16">Soil Type 16</option>
+                    <option value="17">Soil Type 17</option>
+                    <option value="18">Soil Type 18</option>
+                    <option value="19">Soil Type 19</option>
+                    <option value="20">Soil Type 20</option>
+                    <option value="21">Soil Type 21</option>
+                    <option value="22">Soil Type 22</option>
+                    <option value="23">Soil Type 23</option>
+                    <option value="24">Soil Type 24</option>
+                    <option value="25">Soil Type 25</option>
+                    <option value="26">Soil Type 26</option>
+                    <option value="27">Soil Type 27</option>
+                    <option value="28">Soil Type 28</option>
+                    <option value="29">Soil Type 29</option>
+                    <option value="30">Soil Type 30</option>
+                    <option value="31">Soil Type 31</option>
+                    <option value="32">Soil Type 32</option>
+                    <option value="33">Soil Type 33</option>
+                    <option value="34">Soil Type 34</option>
+                    <option value="35">Soil Type 35</option>
+                    <option value="36">Soil Type 36</option>
+                    <option value="37">Soil Type 37</option>
+                    <option value="38">Soil Type 38</option>
+                    <option value="39">Soil Type 39</option>
+                    <option value="40">Soil Type 40</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Predict">
+            </div>
+        </form>
+        <div class="form-container">
+            <b>{{output_text}}</b>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <h2>Covertype Model Training</h2>
+        <form id="mushroom-train" method="post">
+            <div class="form-group">
+                <input type="submit" value="Train">
+            </div>
+        </form>
+        <div class="form-container"><b>
+        {{prediction_text}}</b>
+        </div>
+</body>
+
+</html>
